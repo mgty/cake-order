@@ -79,8 +79,34 @@
 		}
 
 		//requests
+		$requests = filter_input(INPUT_POST, 'requests');
+		$requests = nl2br($requests, false);
+		if ($requests =! ''){
+			echo "You made this request: <br>$requests<br>.
+			 We will do our best to honor it." 
+		}
+
+		//Final Calculation:
+		$total_size_price = $size_price[$size];
+		$total_frosting_price = 20;
+		$total_toppings = count($toppings) * 20;
+		$total_extras = count($extras) * 10;
+		$total = $total_size_price + $total_frosting_price + $total_toppings + $total_extras;
+		$phone_number = filter_input(INPUT_POST, 'phone_number');
+		$address1 = filter_input(INPUT_POST, 'address1');
+		$address2 = filter_input(INPUT_POST, 'address2');
+
+		$total_price_formatted = "$".number_format($total, 2); 
 
 	?>
+<br>
+<p>You total amount due on delivery is <?php echo $total_price_formatted;?></p>
+<p>Your cake will be delivered to: 
+<?php echo "$address1 <br> $address2"?>
+<br>
+We will call phone number: <?php echo " $phone_number; when it's on the way."?>
+Thanks for ordering at Sweet Lily's Bakery!
+</p>
 
 </body>
 </html>
