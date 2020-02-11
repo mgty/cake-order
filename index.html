@@ -1,59 +1,56 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Sweet Lily's Bakery</title>
-	<link rel="stylesheet" type="text/css" href="main.css">
-</head>
-<body>
-	<h2>Sweet Lily's Bakery</h2>
-	<h4>Customer Information</h4>
-
-	<div>
+	<head>
+		<title>Sweet Lily's Bakery</title>
+		<link rel="stylesheet" type="text/css" href="main.css">
+	</head>
+	<body>
 		<form action="cake.php" method="post">
-			<input type="text" name="phone_number" placeholder="Phone Number">
-			<input type="text" name="address1" placeholder="Address 1">
-			<input type="text" name="address2" placeholder="Address 2">
+			<h2>Sweet Lily's Bakery</h2>
+			<h4>Customer Information</h4>
+
+			<div>
+				<input type="text" name="phone_number" placeholder="Phone Number">
+				<input type="text" name="address1" placeholder="Address 1">
+				<input type="text" name="address2" placeholder="Address 2">
+
+				<h4>Your Order</h4>
+				<h5>Select Size</h5>
+					<input type="radio" name="size" value="small">Small $80<br>
+					<input type="radio" name="size" value="medium">Medium $150<br>
+					<input type="radio" name="size" value="large">Large $250<br>
+
+				<h5>Select Frosting - $20 each</h5>
+					<input type="radio" name="frosting" value="chocolate">Chocolate<br>
+					<input type="radio" name="frosting" value="vanilla">Vanilla<br>
+					<input type="radio" name="frosting" value="strawberry">Strawberry<br>
+					<input type="radio" name="frosting" value="caramel">Caramel<br>
+
+				<h5>Select Your Toppings - $20 each</h5>
+					<input type="checkbox" name="toppings[]" value="sprinkles">Sprinkles<br>
+					<input type="checkbox" name="toppings[]" value="fruit">Fresh Fruit<br>
+					<input type="checkbox" name="toppings[]" value="choc_candies">Mini Chocolate Candies<br>
+					<input type="checkbox" name="toppings[]" value="nuts">Chopped, Slivered, Toasted Nutes<br>
+					<input type="checkbox" name="toppings[]" value="sugar_flower">Sugar Flowers<br>
+					<input type="checkbox" name="toppings[]" value="marshmallows">Marshmallows<br>
+
+				<h5>Extras - $10 each</h5>
+					<select name="extra[]" size="5" multiple>
+						<option value="flowers">Flower Decoration</option>
+						<option value="bow">Colorful Bows</option>
+						<option value="cake_topper">Bride & Groom Cake Topper</option>
+						<option value="cake_pops">Cake Pops</option>
+						<option value="candles">Candles</option>
+					</select>
+
+				<h5>Special Requests - Pricing will vary</h5>
+					<textarea name="requests"></textarea>
+
+				<div id="submit_btn">
+					<input type="submit" name="Submit">
+				</div>
+
+			</div>
 		</form>
-
-		<h4>Your Order</h4>
-
-			<h5>Select Size</h5>
-				<input type="radio" name="size" value="medium">Medium $80<br>
-				<input type="radio" name="size" value="large">Large $150<br>
-				<input type="radio" name="size" value="wedding">Wedding $250<br>
-
-			<h5>Select Frosting - $20 each</h5>
-				<input type="radio" name="frosting" value="chocolate">Chocolate<br>
-				<input type="radio" name="frosting" value="vanilla">Vanilla<br>
-				<input type="radio" name="frosting" value="strawberry">Strawberry<br>
-				<input type="radio" name="frosting" value="caramel">Caramel<br>
-
-			<h5>Select Your Toppings - $20 each</h5>
-				<input type="checkbox" name="toppings[]" value="sprinkles">Sprinkles<br>
-				<input type="checkbox" name="toppings[]" value="fruit">Fresh Fruit<br>
-				<input type="checkbox" name="toppings[]" value="choc_candies">Mini Chocolate Candies<br>
-				<input type="checkbox" name="toppings[]" value="nuts">Chopped, Slivered, Toasted Nutes<br>
-				<input type="checkbox" name="toppings[]" value="sugar_flower">Sugar Flowers<br>
-				<input type="checkbox" name="toppings[]" value="marshmallows">Marshmallows<br>
-
-			<h5>Other Items - $10 each</h5>
-				<select name="extra[]" size="5" multiple>
-					<option value="flowers">Flower Decoration</option>
-					<option value="bow">Colorful Bows</option>
-					<option value="cake_topper">Bride & Groom Cake Topper</option>
-					<option value="cake_pops">Cake Pops</option>
-					<option value="candles">Candles</option>
-				</select>
-
-			<h5>Special Requests - Pricing will vary</h5>
-			<textarea name="requests"></textarea>
-
-		<div id="submit_btn">
-			<input type="submit" name="Submit">
-		</div>
-	</div>
-
-
-
-</body>
+	</body>
 </html>

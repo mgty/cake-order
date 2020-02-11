@@ -1,104 +1,115 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Sweet Lily's Bakery</title>
-	<link rel="stylesheet" type="text/css" href="main.css">
+    <title>Sweet Lily's Bakery</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
-	<h2>Sweet Lily's Bakery</h2>
-	<h4>Your Cake Order</h4>
-	<?php
-		$size_price = ["medium" => 80, "large" => 150, "wedding" => 250];
+    <h2>Sweet Lily's Bakery</h2>
+    <h4>Your Cake Order</h4>
+    <?php
+        $size_price = ["Small" => 80, "Medium" => 150, "Large" => 250];
 
-		//size
-		if($size == NULL){
-				echo "Please choose a cake size."
-			} else {
-				$size = filter_input(INPUT_POST, 'size');
-					echo "You selected size $size @ $size_price[$size]<br>";
-			};
-
-
-		//frosting
-		$frosting_price = ["chocolate", "vanilla", "strawberry", "caramel"];
-
-			if($frosting == NULL){
-				echo "Please choose a frosting."
-			} else {
-				echo "You selected $frosting frosting. Great Choice! <br>"
-			};
+        //size
+        $size = filter_input(INPUT_POST, 'size');
+        if($size == NULL){
+                echo "Please choose a cake size.";
+            } else {
+                echo "Selected Size: $size @ $$size_price[$size]<br>";
+            };
 
 
-		//toppings
-		$toppings = filter_input(INPUT_POST, 'toppings', 
-			FILTER_SANITIZE_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
+        //frosting
+        $frosting = filter_input(INPUT_POST, 'frosting');
+        $frosting_price = ["chocolate", "vanilla", "strawberry", "caramel"];
+
+            if($frosting == NULL){
+                echo "Please choose a frosting.";
+            } else {
+                echo "Selected Frosting: $frosting. Great Choice!<br>";
+            };
 
 
-		if ($toppings > 1){
-			$num_toppings = count($toppings);
-				echo "You have selected $toppings at $20 each<br>";
-				foreach ($toppings as $key => $value) {
-				echo "$value $20<br>";
-			} elseif ($toppings == 1) {
-				echo "You have selected this $num_toppings @ $20<br>";
-				foreach ($toppings as $key => $value) {
-					echo "$value $20<br>";
-			} else {
-				foreach ($toppings as $key => $value) {
-					echo "$value $20<br>";
-			}
+        //toppings
+        $toppings = filter_input(INPUT_POST, 'toppings', 
+            FILTER_SANITIZE_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
+        
+        
+        if ($toppings != NULL ){
+            echo "Selected Toppings: <br>";
+            foreach ($toppings as $key => $value) {
+                echo "&#8226; $value<br>";
+            } 
+        } else {
+            echo "No toppings selected..<br>";
+        }
 
-		}
 
-		/*if ($toppings =! NULL){
-			$num_toppings = count($toppings);
-				if ($toppings == 1){
-					echo "You have selected this $num_toppings @ $20<br>";
-					foreach ($toppings as $key => $value){
-						echo "$value $20<br>";
-					} else {
-					echo "You have selected these $num_toppings @ $20 each<br>";
-					foreach ($toppings as $key => $value) {
-						echo "$value $20<br>";
-			}
-				};
-		}*/
+        /* if ($toppings > 1){
+            $num_toppings = count($toppings);
+                echo "You have selected $toppings at $20 each<br>";
+                foreach ($toppings as $key => $value) {
+                echo "$value $20<br>";
+            } elseif ($toppings == 1) {
+                echo "You have selected this $num_toppings @ $20<br>";
+                foreach ($toppings as $key => $value) {
+                    echo "$value $20<br>";
+            } else {
+                foreach ($toppings as $key => $value) {
+                    echo "$value $20<br>";
+            }
 
-		//extras
-		$extra = filter_input(INPUT_POST, 'extra',
-			FILTER_SANITIZE_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
+        }
 
-		if ($extra !== NULL){
-			$num_extra = count ($extra);
-			echo "You also chose @ $10 each: <br>";
-			foreach ($extra as $key2 => $value2) {
-				echo "$value2 $10 <br>";
-			} 
-		} else {
-				echo "No extras selected.";
-		}
+        /*if ($toppings =! NULL){
+            $num_toppings = count($toppings);
+                if ($toppings == 1){
+                    echo "You have selected this $num_toppings @ $20<br>";
+                    foreach ($toppings as $key => $value){
+                        echo "$value $20<br>";
+                    } else {
+                    echo "You have selected these $num_toppings @ $20 each<br>";
+                    foreach ($toppings as $key => $value) {
+                        echo "$value $20<br>";
+            }
+                };
+        }*/
 
-		//requests
-		$requests = filter_input(INPUT_POST, 'requests');
-		$requests = nl2br($requests, false);
-		if ($requests =! ''){
-			echo "You made this request: <br>$requests<br>.
-			 We will do our best to honor it." 
-		}
+        //extras
+        $extra = filter_input(INPUT_POST, 'extra',
+            FILTER_SANITIZE_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
 
-		//Final Calculation:
-		$total_size_price = $size_price[$size];
-		$total_frosting_price = 20;
-		$total_toppings = count($toppings) * 20;
-		$total_extras = count($extras) * 10;
-		$total = $total_size_price + $total_frosting_price + $total_toppings + $total_extras;
-		$phone_number = filter_input(INPUT_POST, 'phone_number');
-		$address1 = filter_input(INPUT_POST, 'address1');
-		$address2 = filter_input(INPUT_POST, 'address2');
+        if ($extra !== NULL){
+            $num_extra = count ($extra);
+            echo "You also chose @ $10 each: <br>";
+            foreach ($extra as $key2 => $value2) {
+                echo "$value2 $10 <br>";
+            } 
+        } else {
+                echo "No extras selected.";
+        }
 
-		$total_price_formatted = "$".number_format($total, 2); 
+        //requests
+        $requests = filter_input(INPUT_POST, 'requests');
+        $requests = nl2br($requests, false);
+        if ($requests =! ''){
+            echo "You made this request: <br>$requests<br>.
+             We will do our best to honor it."; 
+        }
 
-	?>
+        //Final Calculation:
+        $total_size_price = $size_price[$size];
+        $total_frosting_price = 20;
+        $total_toppings = count($toppings) * 20;
+        $total_extras = count($extras) * 10;
+        $total = $total_size_price + $total_frosting_price + $total_toppings + $total_extras;
+        $phone_number = filter_input(INPUT_POST, 'phone_number');
+        $address1 = filter_input(INPUT_POST, 'address1');
+        $address2 = filter_input(INPUT_POST, 'address2');
+
+        $total_price_formatted = "$".number_format($total, 2); 
+
+    ?>
 <br>
 <p>You total amount due on delivery is <?php echo $total_price_formatted;?></p>
 <p>Your cake will be delivered to: 
