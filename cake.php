@@ -7,7 +7,8 @@
 <body>
     <h2>Sweet Lily's Bakery</h2>
     <h4>Your Cake Order</h4>
-    <?php
+    <?php        
+
         $size_price = ["Small" => 80, "Medium" => 150, "Large" => 250];
 
         //size
@@ -15,7 +16,7 @@
         if($size == NULL){
                 echo "Please choose a cake size.";
             } else {
-                echo "Selected Size: $size @ $$size_price[$size]<br>";
+                echo "Size: $size @ $$size_price[$size]<br>";
             };
 
 
@@ -36,14 +37,25 @@
         
         
         if ($toppings != NULL ){
-            echo "Selected Toppings: <br>";
-            foreach ($toppings as $key => $value) {
+           echo "Topping(s) ($20 each): <br>";
+                foreach ($toppings as $key => $value) {
                 echo "&#8226; $value<br>";
-            } 
+            }
         } else {
             echo "No toppings selected..<br>";
         }
 
+        //extras
+
+        $extras = filter_input(INPUT_POST, 'extras',
+            FILTER_SANITIZE_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
+
+        if ($extras != NULL){
+            echo "Extra(s) ($10 each): <br>";
+            foreach ($extras as $key3 => $value3) {
+                echo "&#8226; $value3<br>";
+            }
+        }
 
         /* if ($toppings > 1){
             $num_toppings = count($toppings);
@@ -75,27 +87,17 @@
                 };
         }*/
 
-        //extras
-        $extra = filter_input(INPUT_POST, 'extra',
-            FILTER_SANITIZE_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
-
-        if ($extra !== NULL){
-            $num_extra = count ($extra);
-            echo "You also chose @ $10 each: <br>";
-            foreach ($extra as $key2 => $value2) {
-                echo "$value2 $10 <br>";
-            } 
-        } else {
-                echo "No extras selected.";
-        }
+        
+    
 
         //requests
         $requests = filter_input(INPUT_POST, 'requests');
         $requests = nl2br($requests, false);
-        if ($requests =! ''){
-            echo "You made this request: <br>$requests<br>.
+        if ($requests != ''){
+            echo "You made this request: <br> '<i>$requests</i>'.<br>
              We will do our best to honor it."; 
         }
+
 
         //Final Calculation:
         $total_size_price = $size_price[$size];
@@ -115,7 +117,7 @@
 <p>Your cake will be delivered to: 
 <?php echo "$address1 <br> $address2"?>
 <br>
-We will call phone number: <?php echo " $phone_number; when it's on the way."?>
+We will call phone number: <?php echo " $phone_number when it's on the way. "?>
 Thanks for ordering at Sweet Lily's Bakery!
 </p>
 
