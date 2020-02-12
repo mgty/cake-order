@@ -1,71 +1,181 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Sweet Lily's Bakery</title>
-        <link rel="stylesheet" type="text/css" href="main.css">
-        <script src="script.js"></script>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    </head>
-    <body>
-        <form action="cake.php" method="post">
-            <h2>Sweet Lily's Bakery</h2>
-            <h4>Customer Information</h4>
+<head>
+    <title>Sweet Lily's Bakery</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <script src="script.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+    <div class="full-page-container container">
+        <p class="page-title">Sweet Lily's Bakery - Order Form</p>
+        <form action="pizza.php" method="post">
+            <div class="row">
+                <div class="col-sm-4">
+                    <p class="form-title">Select Size</p>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="size" id="small" value="Small" checked>
+                        <label class="option-title form-check-label" for="small">
+                        Small $80
+                        </label>
+                    </div>
 
-            <div>
-                <h4>Your Order</h4>
-                <h5>Select Size</h5>
-                    <input type="radio" name="size" value="Small">Small $80<br>
-                    <input type="radio" name="size" value="Medium">Medium $150<br>
-                    <input type="radio" name="size" value="Large">Large $250<br>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="size" id="medium" value="Medium">
+                        <label class="option-title form-check-label" for="medium">
+                        Medium $150
+                        </label>
+                    </div>
 
-                <h5>Select Frosting - $20 each</h5>
-                    <input type="radio" name="frosting" value="chocolate">Chocolate<br>
-                    <input type="radio" name="frosting" value="vanilla">Vanilla<br>
-                    <input type="radio" name="frosting" value="strawberry">Strawberry<br>
-                    <input type="radio" name="frosting" value="caramel">Caramel<br>
+                    <div class="form-check disabled">
+                        <input class="form-check-input" type="radio" name="size" id="large" value="Large">
+                        <label class="option-title form-check-label" for="large">
+                        Large $250
+                        </label>
+                    </div>
 
-                <h5>Select Your Toppings - $20 each</h5>
-                    <input type="checkbox" name="toppings[]" value="Sprinkles">Sprinkles<br>
-                    <input type="checkbox" name="toppings[]" value="Fresh Fruit">Fresh Fruit<br>
-                    <input type="checkbox" name="toppings[]" value="Mini Chocolate Candies">Mini Chocolate Candies<br>
-                    <input type="checkbox" name="toppings[]" value="Chopped, Slivered, Toasted Nutes">Chopped, Slivered, Toasted Nuts<br>
-                    <input type="checkbox" name="toppings[]" value="Sugar Flowers">Sugar Flowers<br>
-                    <input type="checkbox" name="toppings[]" value="Marshmallows">Marshmallows<br>
+                    <br>
 
-                <h5>Extras - $10 each</h5>
-                    <input type="checkbox" name="extras[]" value="Flower Decoration">Flower Decoration<br>
-                    <input type="checkbox" name="extras[]" value="Colorful Bows">Colorful Bows<br>
-                    <input type="checkbox" name="extras[]" value="Bride & Groom Cake Topper">Bride & Groom Cake Topper<br>
-                    <input type="checkbox" name="extras[]" value="Cake Pops">Cake Pops<br>
-                    <input type="checkbox" name="extras[]" value="Candles">Candles<br>
+                    <p class="form-title">Toppings $20 each</p>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="toppings[]" value="Sprinkles" id="sprinkles">
+                        <label class="option-title form-check-label" for="sprinkles">
+                        Sprinkles
+                        </label>
+                    </div>
 
-            
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="extras[]" value="Flower Decoration" id="flower-dec">
+                        <label class="option-title form-check-label" for="flower-dec">
+                        Flower Decoration
+                        </label>
+                    </div>
 
-                <h5>Special Requests - Pricing will vary</h5>
-                    <textarea name="requests"></textarea>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="extras[]" value="Colorful Bows" id="bows">
+                        <label class="option-title form-check-label" for="bows">
+                        Colorful Bows
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="extras[]" value="Bride & Groom Cake Topper" id="topper">
+                        <label class="option-title form-check-label" for="topper">
+                        Bride & Groom Cake Topper
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="extras[]" value="Cake Pops" id="cake-pops">
+                        <label class="option-title form-check-label" for="cake-pops">
+                        Cake Pops
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="extras[]" value="Candles" id="candles">
+                        <label class="option-title form-check-label" for="candles">
+                        Candles
+                        </label>
+                    </div>
+                </div>
 
 
-                <h4>Deliver To: </h4>
-                    
-                    <div class="row">
-                        <div class="col">
-                          <input type="text" class="form-control" placeholder="Phone Number" name="phone_number">
+                <div class="col-sm-4">
+
+                    <p class="form-title">Select Frosting - $20 each</p>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="frosting" id="chocolate" value="Chocolate" checked>
+                        <label class="option-title form-check-label" for="chocolate">
+                        Chocolate
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="frosting" id="vanilla" value="Vanilla">
+                        <label class="option-title form-check-label" for="vanilla">
+                        Vanilla
+                        </label>
+                    </div>
+
+                    <div class="form-check disabled">
+                        <input class="form-check-input" type="radio" name="frosting" id="strawberry" value="Strawberry">
+                        <label class="option-title form-check-label" for="strawberry">
+                        Strawberry
+                        </label>
+                    </div>
+
+                    <div class="form-check disabled">
+                        <input class="form-check-input" type="radio" name="frosting" id="caramel" value="Caramel">
+                        <label class="option-title form-check-label" for="caramel">
+                        Caramel
+                        </label>
+                    </div>
+
+                    <br>
+
+                    <p class="form-title">Extras - $10 each</p>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="extras[]" value="Flower Decoration" id="flower-dec">
+                            <label class="option-title form-check-label" for="flower-dec">
+                            Flower Decoration
+                            </label>
                         </div>
-                        <div class="col">
-                          <input type="text" class="form-control" placeholder="Address 1" name="address1">
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="extras[]" value="Colorful Bows" id="bows">
+                            <label class="option-title form-check-label" for="bows">
+                            Colorful Bows
+                            </label>
                         </div>
-                        <div class="col">
-                          <input type="text" class="form-control" placeholder="Address 2" name="address2">
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="extras[]" value="Bride & Groom Cake Topper" id="topper">
+                            <label class="option-title form-check-label" for="topper">
+                            Bride & Groom Cake Topper
+                            </label>
                         </div>
-                      </div>
-                    
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="extras[]" value="Cake Pops" id="cake-pops">
+                            <label class="option-title form-check-label" for="cake-pops">
+                            Cake Pops
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="extras[]" value="Candles" id="candles">
+                            <label class="option-title form-check-label" for="candles">
+                            Candles
+                            </label>
+                        </div>
+                </div>
+
+
+                <div class="col-sm-4">
+                    <p class="form-title">Special Requests</p>
+                        <div class="form-group">
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="requests"></textarea>
+                        </div>
+
+                    <p class="form-title">Your Info:</p>
+                        <input type="text" class="form-control" placeholder="Full Name" name="full_name">
+                        <br>
+                        <input type="text" class="form-control" placeholder="Phone Number" name="phone_number">
+                        <br>
+                        <input type="text" class="form-control" placeholder="Address" name="address">
+                        <br>
+                        <br>  
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="second-column col-sm-12">
                     <input type="submit" id="check" value="OK">
+                </div>
             </div>
         </form>
-
-
-
-
-
-    </body>
+    </div>
+</body>
 </html>
